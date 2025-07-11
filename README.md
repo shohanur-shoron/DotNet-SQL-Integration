@@ -1,4 +1,4 @@
-# Database Integration in Your .NET Project
+# Database Integration in .NET Project
 
 This guide explains how your .NET application connects to and interacts with a SQL Server database using Entity Framework (EF) Core.
 
