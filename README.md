@@ -1,4 +1,4 @@
-# Database Integration in .NET Project
+# Database Integration in Your .NET Project
 
 This guide explains how your .NET application connects to and interacts with a SQL Server database using Entity Framework (EF) Core.
 
@@ -23,7 +23,7 @@ namespace Bookverse.Models
 {
     public class Item
     {
-        public int Id { get; set; }
+        public int Id { get; set; } // The unique ID for each item
         public string Name { get; set; }
         public string Description { get; set; }
         public double Price { get; set; }
@@ -156,3 +156,35 @@ dotnet ef migrations add AddAuthorToItem
 dotnet ef database update
 ```
 The "Items" table in your database will now have a new "Author" column, and your existing data will be safe. You repeat these two commands every time you change your models.
+
+---
+
+### Alternative: Using the Package Manager Console in Visual Studio
+
+If you prefer to work inside Visual Studio, you can use the **Package Manager Console** to run your migration commands.
+
+**1. Open the Console:**
+Go to `Tools -> NuGet Package Manager -> Package Manager Console`.
+
+**2. Create a Migration:**
+This is the same as the `dotnet ef migrations add` command.
+
+```powershell
+Add-Migration InitialCreate
+```
+
+**3. Update the Database:**
+This is the same as the `dotnet ef database update` command.
+
+```powershell
+Update-Database
+```
+
+**Updating a Model:**
+When you change a model, the process is the same. Just use a descriptive name for your migration.
+
+```powershell
+Add-Migration AddAuthorToItem
+Update-Database
+```
+
