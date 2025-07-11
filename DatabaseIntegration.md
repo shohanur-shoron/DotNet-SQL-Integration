@@ -157,6 +157,34 @@ dotnet ef database update
 ```
 The "Items" table in your database will now have a new "Author" column, and your existing data will be safe. You repeat these two commands every time you change your models.
 
+### What To Do When You Remove a Column
+
+Removing a column is just like adding one—it's another type of migration.
+
+**1. Change the C# Model:**
+Update `Models/ItemModel.cs` and remove the property you no longer need. For example, to remove the `Description` property:
+```csharp
+public class Item
+{
+    public int Id { get; set; }
+    public string Name { get; set; }
+    // public string Description { get; set; } // Removed
+    public double Price { get; set; }
+    public string Author { get; set; }
+}
+```
+
+**2. Create a New Migration:** Give it a descriptive name.
+```bash
+dotnet ef migrations add RemoveDescriptionFromItem
+```
+
+**3. Update the Database:** Apply the change.
+```bash
+dotnet ef database update
+```
+The "Description" column will now be dropped from your database table.
+
 ---
 
 ### Alternative: Using the Package Manager Console in Visual Studio
@@ -185,6 +213,14 @@ When you change a model, the process is the same. Just use a descriptive name fo
 
 ```powershell
 Add-Migration AddAuthorToItem
+Update-Database
+```
+
+**Removing a Column:**
+When you remove a column from a model, the process is the same. Just use a descriptive name for your migration.
+
+```powershell
+Add-Migration RemoveDescriptionFromItem
 Update-Database
 ```
 
