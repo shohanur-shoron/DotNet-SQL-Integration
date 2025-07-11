@@ -90,6 +90,20 @@ builder.Services.AddDbContext<BookverseContext>(options =>
 
 ---
 
+### Step 5: Installing the Required Packages
+
+Before you can use Entity Framework Core, you need to install a few packages from NuGet. These packages provide the core functionality, the command-line tools, and the specific provider for SQL Server.
+
+Run these commands in your terminal, in the root directory of your project:
+
+```bash
+dotnet add package Microsoft.EntityFrameworkCore
+dotnet add package Microsoft.EntityFrameworkCore.Tools
+dotnet add package Microsoft.EntityFrameworkCore.SqlServer
+```
+
+---
+
 ## Creating and Updating the Database (The Commands)
 
 You use a tool called `dotnet-ef` to create and update your database based on your C# models. This process is called **"migrations"**.
